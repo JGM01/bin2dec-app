@@ -33,18 +33,22 @@ function App() {
     });
   };
 
-  function binToDec(bin: string): number {
-    let result = 0;
+function binToDec(bin: string): number {
+  let result = 0;
 
-    bin
-      .split('')
-      .reverse()
-      .map((val, idx) => {
-        return val === '1' && (result += Math.pow(2, idx));
-      });
-    return result;
-  } 
+  bin
+    .split('')
+    .reverse()
+    .map((val, idx) => {
+      if (val !== '0' && val !== '1') {
+        throw new Error('Invalid binary string');
+      }
+      val === '1' && (result += Math.pow(2, idx));
+    });
+  return result;
+} 
 
+  
   
 
   return (
